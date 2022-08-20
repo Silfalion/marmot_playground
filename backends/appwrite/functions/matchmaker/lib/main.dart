@@ -46,13 +46,22 @@ Future<void> start(final req, final res) async {
   if (payload != null) {
     await getCandidate(payload, database);
 
-    //find a request
+  /*
 
-    //create a match
+  ---How to know if a user didn’t already leave the page after making a request---
 
-    //delete the request
+  This should be an extension of the connectivity feature.
 
-    //exit
+  If we’re trying to find a match for someone. We check that both of them are connected(the connectivity field in the user table).
+
+  If they both are we create a match. 
+
+  If the player initiating the matchmaking is offline when we find a match, we mark the request as cancelled.
+
+  If the player found is offline, we cancel his request and try to find a new match for the initiator. 
+  If after a small period of time, no match is found we cancel their request. Which will result in the app telling them, no match was found.
+
+  */
 
   }
   res.json({
