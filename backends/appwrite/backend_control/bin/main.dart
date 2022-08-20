@@ -1,4 +1,4 @@
-import 'package:backend_control/collection_creators/match_creator.dart';
+import 'package:backend_control/collection_creators/matches_creator.dart';
 import 'package:backend_control/collection_creators/requests_creator.dart';
 import 'package:backend_control/constants/consts.dart';
 import 'package:backend_control/env/env.dart';
@@ -25,7 +25,7 @@ void main() async {
 
   logger.i('CREATING COLLECTIONS\n');
 
-  final matchCreator = MatchCreator(db);
+  final matchCreator = MatchesCreator(db);
   final matchRequestsCreator = RequestsCreator(db);
 
   await matchCreator.createMatchesCollection();
