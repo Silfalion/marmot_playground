@@ -20,8 +20,8 @@ User _$UserFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$User {
+  @JsonKey(name: r'$id')
   String get id => throw _privateConstructorUsedError;
-  String get alias => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -32,7 +32,7 @@ mixin _$User {
 abstract class $UserCopyWith<$Res> {
   factory $UserCopyWith(User value, $Res Function(User) then) =
       _$UserCopyWithImpl<$Res>;
-  $Res call({String id, String alias});
+  $Res call({@JsonKey(name: r'$id') String id});
 }
 
 /// @nodoc
@@ -46,16 +46,11 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
   @override
   $Res call({
     Object? id = freezed,
-    Object? alias = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      alias: alias == freezed
-          ? _value.alias
-          : alias // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -66,7 +61,7 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
   factory _$$_UserCopyWith(_$_User value, $Res Function(_$_User) then) =
       __$$_UserCopyWithImpl<$Res>;
   @override
-  $Res call({String id, String alias});
+  $Res call({@JsonKey(name: r'$id') String id});
 }
 
 /// @nodoc
@@ -81,16 +76,11 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
-    Object? alias = freezed,
   }) {
     return _then(_$_User(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      alias: alias == freezed
-          ? _value.alias
-          : alias // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -99,18 +89,17 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_User implements _User {
-  _$_User({required this.id, required this.alias});
+  _$_User({@JsonKey(name: r'$id') required this.id});
 
   factory _$_User.fromJson(Map<String, dynamic> json) => _$$_UserFromJson(json);
 
   @override
+  @JsonKey(name: r'$id')
   final String id;
-  @override
-  final String alias;
 
   @override
   String toString() {
-    return 'User(id: $id, alias: $alias)';
+    return 'User(id: $id)';
   }
 
   @override
@@ -118,16 +107,13 @@ class _$_User implements _User {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_User &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.alias, alias));
+            const DeepCollectionEquality().equals(other.id, id));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(alias));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(id));
 
   @JsonKey(ignore: true)
   @override
@@ -143,15 +129,13 @@ class _$_User implements _User {
 }
 
 abstract class _User implements User {
-  factory _User({required final String id, required final String alias}) =
-      _$_User;
+  factory _User({@JsonKey(name: r'$id') required final String id}) = _$_User;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
 
   @override
+  @JsonKey(name: r'$id')
   String get id;
-  @override
-  String get alias;
   @override
   @JsonKey(ignore: true)
   _$$_UserCopyWith<_$_User> get copyWith => throw _privateConstructorUsedError;

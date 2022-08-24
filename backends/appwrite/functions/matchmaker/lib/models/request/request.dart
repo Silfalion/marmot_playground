@@ -8,6 +8,7 @@ class Request with _$Request {
   factory Request({
     @JsonKey(name: '\$id') required String id,
     required String playerId,
+    
     @JsonKey(name: '\$createdAt') required double createdAt,
     @JsonKey(name: '\$updatedAt') required double updatedAt,
   }) = _Request;

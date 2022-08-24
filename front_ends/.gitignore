@@ -16,6 +16,10 @@
 *.iws
 .idea/*
 
+#env variables
+.env
+*/.env.g.dart
+
 # Visual Studio Code related
 .classpath
 .project
