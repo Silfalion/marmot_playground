@@ -12,7 +12,7 @@ import 'package:appwrite_ruq_api/src/models/models.dart' as localModels;
 ///requests to the server
 class MatchmakingRepository {
   /// {@macro appwrite_ruq_api}
-  MatchmakingRepository();
+  MatchmakingRepository({Client? client}) : _client = client ?? Client();
 
   ///initial setup
   TaskEither<Exception, Unit> setup(
@@ -52,7 +52,7 @@ class MatchmakingRepository {
     }).mapLeft<Exception>((l) => l);
   }
 
-  final Client _client = Client();
+  final Client _client;
 
   ///Appwrite database service
   late Databases database;
@@ -73,7 +73,7 @@ class MatchmakingRepository {
   ///subscription to the request event
   RealtimeSubscription? _matchesSubscription;
 
-  ///finds a match opponent 
+  ///finds a match opponent
   ///
   ///[timeOut] time in seconds which after the request is canceled
   Future<void> findMatch({int timeOut = 5}) async {
@@ -132,7 +132,7 @@ class MatchmakingRepository {
     });
   }
 
-  ///makes the matchmaking request to the server 
+  ///makes the matchmaking request to the server
   TaskEither<AppwriteException, void> _makeMatchingRequest() {
     ///make matching request
     return TaskEither<AppwriteException, void>.tryCatch(
@@ -140,6 +140,7 @@ class MatchmakingRepository {
         collectionId: 'requests',
         documentId: 'unique()',
         data: {'playerId': session.getRight().getOrElse(() => null)?.userId},
+        write: [],
       ),
       (error, stackTrace) {
         return error as AppwriteException;

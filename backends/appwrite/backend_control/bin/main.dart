@@ -1,3 +1,4 @@
+import 'package:backend_control/collection_creators/games_creator.dart';
 import 'package:backend_control/collection_creators/matches_creator.dart';
 import 'package:backend_control/collection_creators/requests_creator.dart';
 import 'package:backend_control/constants/consts.dart';
@@ -27,7 +28,9 @@ void main() async {
 
   final matchCreator = MatchesCreator(db);
   final matchRequestsCreator = RequestsCreator(db);
+  final gamesRequestsCreator = GamesCreator(db);
 
   await matchCreator.createMatchesCollection();
   await matchRequestsCreator.createMatchRequestsCollection();
+  await gamesRequestsCreator.createGamesCollection();
 }

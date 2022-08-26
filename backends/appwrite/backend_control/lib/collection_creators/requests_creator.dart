@@ -4,20 +4,22 @@ import 'package:backend_control/utils/logger.dart';
 import 'package:dart_appwrite/dart_appwrite.dart';
 import 'package:fpdart/fpdart.dart';
 
-const String playerIdAttName = 'playerId';
-
 class RequestsCreator {
   RequestsCreator(this.db);
 
   final Databases db;
+
+  final String playerIdAttName = 'playerId';
+
+  final String collectionId = requetsCollectionId;
 
   ///creates the match collection and if the creation is successful
   ///all its attributes
   Future<void> createMatchRequestsCollection() async {
     final matchRequestsCollectionCreation = TaskEither<Object, void>.tryCatch(
       () => db.createCollection(
-        collectionId: requetsCollectionId,
-        name: requetsCollectionId,
+        collectionId: collectionId,
+        name: collectionId,
         permission: 'collection',
         read: [],
         write: ['role:all'],
@@ -43,7 +45,7 @@ class RequestsCreator {
       () async {
         //creates player id attribute
         await db.createStringAttribute(
-          collectionId: requetsCollectionId,
+          collectionId: collectionId,
           key: playerIdAttName,
           xrequired: true,
           array: false,

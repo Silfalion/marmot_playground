@@ -10,6 +10,5 @@ import 'package:marmot_playground/app/app.dart';
 import 'package:marmot_playground/bootstrap.dart';
 
 void main() {
-  
-  bootstrap(() => const App());
+  bootstrap(App.new);
 }

@@ -3,23 +3,25 @@ import 'package:backend_control/utils/logger.dart';
 import 'package:dart_appwrite/dart_appwrite.dart';
 import 'package:fpdart/fpdart.dart';
 
-const String listPlayersAttName = 'listPlayers';
-const String matchStatusAttName = 'matchStatus';
-
 enum MatchStatus { playing, cancelled, finished }
 
 class MatchesCreator {
-  MatchesCreator(this.db);
+  MatchesCreator(this._db);
 
-  final Databases db;
+  final Databases _db;
+
+  final String _listPlayersAttName = 'listPlayers';
+  final String _matchStatusAttName = 'matchStatus';
+
+  final _collectionId = matchCollectionId;
 
   ///creates the match collection and if the creation is successful
   ///all its attributes
   Future<void> createMatchesCollection() async {
     final matchCollectionCreation = TaskEither.tryCatch(
-      () => db.createCollection(
-        collectionId: matchCollectionId,
-        name: matchCollectionId,
+      () => _db.createCollection(
+        collectionId: _collectionId,
+        name: _collectionId,
         permission: 'document',
         read: ['role:all'],
         write: [],
@@ -43,39 +45,23 @@ class MatchesCreator {
   TaskEither<Object, void> _createMatchesAttributes() {
     return TaskEither<Object, void>.tryCatch(
       () async {
-
         //creates match status attribute
-        await db.createEnumAttribute(
-          collectionId: matchCollectionId,
-          key: matchStatusAttName,
+        await _db.createEnumAttribute(
+          collectionId: _collectionId,
+          key: _matchStatusAttName,
           xrequired: true,
-          array: true,
+          array: false,
           elements: MatchStatus.values.map((e) => e.name).toList(),
         );
 
-
         //creates players list attribute
-         await db.createStringAttribute(
-          collectionId: matchCollectionId,
-          key: listPlayersAttName,
+        await _db.createStringAttribute(
+          collectionId: _collectionId,
+          key: _listPlayersAttName,
           xrequired: true,
           array: true,
           size: 20,
         );
-
-      },
-      (error, stackTrace) {
-        logger.d(stackTrace);
-        return error;
-      },
-    );
-  }
-
-  ///create the players list attribute
-  TaskEither<Object, void> _createPlayersAtt() {
-    return TaskEither<Object, void>.tryCatch(
-      () async {
-       
       },
       (error, stackTrace) {
         logger.d(stackTrace);

@@ -19,6 +19,8 @@ mixin _$SplashState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() sessionCreation,
+    required TResult Function() settingUpDBConnection,
     required TResult Function() loaded,
     required TResult Function(Exception e) failed,
   }) =>
@@ -26,6 +28,8 @@ mixin _$SplashState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? sessionCreation,
+    TResult Function()? settingUpDBConnection,
     TResult Function()? loaded,
     TResult Function(Exception e)? failed,
   }) =>
@@ -33,6 +37,8 @@ mixin _$SplashState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? sessionCreation,
+    TResult Function()? settingUpDBConnection,
     TResult Function()? loaded,
     TResult Function(Exception e)? failed,
     required TResult orElse(),
@@ -41,6 +47,9 @@ mixin _$SplashState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_SessionCreation value) sessionCreation,
+    required TResult Function(_SettingUpDBConnection value)
+        settingUpDBConnection,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Failed value) failed,
   }) =>
@@ -48,6 +57,8 @@ mixin _$SplashState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_SessionCreation value)? sessionCreation,
+    TResult Function(_SettingUpDBConnection value)? settingUpDBConnection,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Failed value)? failed,
   }) =>
@@ -55,6 +66,8 @@ mixin _$SplashState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_SessionCreation value)? sessionCreation,
+    TResult Function(_SettingUpDBConnection value)? settingUpDBConnection,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Failed value)? failed,
     required TResult orElse(),
@@ -118,6 +131,8 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() sessionCreation,
+    required TResult Function() settingUpDBConnection,
     required TResult Function() loaded,
     required TResult Function(Exception e) failed,
   }) {
@@ -128,6 +143,8 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? sessionCreation,
+    TResult Function()? settingUpDBConnection,
     TResult Function()? loaded,
     TResult Function(Exception e)? failed,
   }) {
@@ -138,6 +155,8 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? sessionCreation,
+    TResult Function()? settingUpDBConnection,
     TResult Function()? loaded,
     TResult Function(Exception e)? failed,
     required TResult orElse(),
@@ -152,6 +171,9 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_SessionCreation value) sessionCreation,
+    required TResult Function(_SettingUpDBConnection value)
+        settingUpDBConnection,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Failed value) failed,
   }) {
@@ -162,6 +184,8 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_SessionCreation value)? sessionCreation,
+    TResult Function(_SettingUpDBConnection value)? settingUpDBConnection,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Failed value)? failed,
   }) {
@@ -172,6 +196,8 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_SessionCreation value)? sessionCreation,
+    TResult Function(_SettingUpDBConnection value)? settingUpDBConnection,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Failed value)? failed,
     required TResult orElse(),
@@ -185,6 +211,255 @@ class _$_Initial implements _Initial {
 
 abstract class _Initial implements SplashState {
   const factory _Initial() = _$_Initial;
+}
+
+/// @nodoc
+abstract class _$$_SessionCreationCopyWith<$Res> {
+  factory _$$_SessionCreationCopyWith(
+          _$_SessionCreation value, $Res Function(_$_SessionCreation) then) =
+      __$$_SessionCreationCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_SessionCreationCopyWithImpl<$Res>
+    extends _$SplashStateCopyWithImpl<$Res>
+    implements _$$_SessionCreationCopyWith<$Res> {
+  __$$_SessionCreationCopyWithImpl(
+      _$_SessionCreation _value, $Res Function(_$_SessionCreation) _then)
+      : super(_value, (v) => _then(v as _$_SessionCreation));
+
+  @override
+  _$_SessionCreation get _value => super._value as _$_SessionCreation;
+}
+
+/// @nodoc
+
+class _$_SessionCreation implements _SessionCreation {
+  const _$_SessionCreation();
+
+  @override
+  String toString() {
+    return 'SplashState.sessionCreation()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_SessionCreation);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() sessionCreation,
+    required TResult Function() settingUpDBConnection,
+    required TResult Function() loaded,
+    required TResult Function(Exception e) failed,
+  }) {
+    return sessionCreation();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? sessionCreation,
+    TResult Function()? settingUpDBConnection,
+    TResult Function()? loaded,
+    TResult Function(Exception e)? failed,
+  }) {
+    return sessionCreation?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? sessionCreation,
+    TResult Function()? settingUpDBConnection,
+    TResult Function()? loaded,
+    TResult Function(Exception e)? failed,
+    required TResult orElse(),
+  }) {
+    if (sessionCreation != null) {
+      return sessionCreation();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_SessionCreation value) sessionCreation,
+    required TResult Function(_SettingUpDBConnection value)
+        settingUpDBConnection,
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Failed value) failed,
+  }) {
+    return sessionCreation(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_SessionCreation value)? sessionCreation,
+    TResult Function(_SettingUpDBConnection value)? settingUpDBConnection,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Failed value)? failed,
+  }) {
+    return sessionCreation?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_SessionCreation value)? sessionCreation,
+    TResult Function(_SettingUpDBConnection value)? settingUpDBConnection,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Failed value)? failed,
+    required TResult orElse(),
+  }) {
+    if (sessionCreation != null) {
+      return sessionCreation(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SessionCreation implements SplashState {
+  const factory _SessionCreation() = _$_SessionCreation;
+}
+
+/// @nodoc
+abstract class _$$_SettingUpDBConnectionCopyWith<$Res> {
+  factory _$$_SettingUpDBConnectionCopyWith(_$_SettingUpDBConnection value,
+          $Res Function(_$_SettingUpDBConnection) then) =
+      __$$_SettingUpDBConnectionCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_SettingUpDBConnectionCopyWithImpl<$Res>
+    extends _$SplashStateCopyWithImpl<$Res>
+    implements _$$_SettingUpDBConnectionCopyWith<$Res> {
+  __$$_SettingUpDBConnectionCopyWithImpl(_$_SettingUpDBConnection _value,
+      $Res Function(_$_SettingUpDBConnection) _then)
+      : super(_value, (v) => _then(v as _$_SettingUpDBConnection));
+
+  @override
+  _$_SettingUpDBConnection get _value =>
+      super._value as _$_SettingUpDBConnection;
+}
+
+/// @nodoc
+
+class _$_SettingUpDBConnection implements _SettingUpDBConnection {
+  const _$_SettingUpDBConnection();
+
+  @override
+  String toString() {
+    return 'SplashState.settingUpDBConnection()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_SettingUpDBConnection);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() sessionCreation,
+    required TResult Function() settingUpDBConnection,
+    required TResult Function() loaded,
+    required TResult Function(Exception e) failed,
+  }) {
+    return settingUpDBConnection();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? sessionCreation,
+    TResult Function()? settingUpDBConnection,
+    TResult Function()? loaded,
+    TResult Function(Exception e)? failed,
+  }) {
+    return settingUpDBConnection?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? sessionCreation,
+    TResult Function()? settingUpDBConnection,
+    TResult Function()? loaded,
+    TResult Function(Exception e)? failed,
+    required TResult orElse(),
+  }) {
+    if (settingUpDBConnection != null) {
+      return settingUpDBConnection();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_SessionCreation value) sessionCreation,
+    required TResult Function(_SettingUpDBConnection value)
+        settingUpDBConnection,
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Failed value) failed,
+  }) {
+    return settingUpDBConnection(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_SessionCreation value)? sessionCreation,
+    TResult Function(_SettingUpDBConnection value)? settingUpDBConnection,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Failed value)? failed,
+  }) {
+    return settingUpDBConnection?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_SessionCreation value)? sessionCreation,
+    TResult Function(_SettingUpDBConnection value)? settingUpDBConnection,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Failed value)? failed,
+    required TResult orElse(),
+  }) {
+    if (settingUpDBConnection != null) {
+      return settingUpDBConnection(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SettingUpDBConnection implements SplashState {
+  const factory _SettingUpDBConnection() = _$_SettingUpDBConnection;
 }
 
 /// @nodoc
@@ -226,6 +501,8 @@ class _$_Loaded implements _Loaded {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() sessionCreation,
+    required TResult Function() settingUpDBConnection,
     required TResult Function() loaded,
     required TResult Function(Exception e) failed,
   }) {
@@ -236,6 +513,8 @@ class _$_Loaded implements _Loaded {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? sessionCreation,
+    TResult Function()? settingUpDBConnection,
     TResult Function()? loaded,
     TResult Function(Exception e)? failed,
   }) {
@@ -246,6 +525,8 @@ class _$_Loaded implements _Loaded {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? sessionCreation,
+    TResult Function()? settingUpDBConnection,
     TResult Function()? loaded,
     TResult Function(Exception e)? failed,
     required TResult orElse(),
@@ -260,6 +541,9 @@ class _$_Loaded implements _Loaded {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_SessionCreation value) sessionCreation,
+    required TResult Function(_SettingUpDBConnection value)
+        settingUpDBConnection,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Failed value) failed,
   }) {
@@ -270,6 +554,8 @@ class _$_Loaded implements _Loaded {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_SessionCreation value)? sessionCreation,
+    TResult Function(_SettingUpDBConnection value)? settingUpDBConnection,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Failed value)? failed,
   }) {
@@ -280,6 +566,8 @@ class _$_Loaded implements _Loaded {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_SessionCreation value)? sessionCreation,
+    TResult Function(_SettingUpDBConnection value)? settingUpDBConnection,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Failed value)? failed,
     required TResult orElse(),
@@ -358,6 +646,8 @@ class _$_Failed implements _Failed {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() sessionCreation,
+    required TResult Function() settingUpDBConnection,
     required TResult Function() loaded,
     required TResult Function(Exception e) failed,
   }) {
@@ -368,6 +658,8 @@ class _$_Failed implements _Failed {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? sessionCreation,
+    TResult Function()? settingUpDBConnection,
     TResult Function()? loaded,
     TResult Function(Exception e)? failed,
   }) {
@@ -378,6 +670,8 @@ class _$_Failed implements _Failed {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? sessionCreation,
+    TResult Function()? settingUpDBConnection,
     TResult Function()? loaded,
     TResult Function(Exception e)? failed,
     required TResult orElse(),
@@ -392,6 +686,9 @@ class _$_Failed implements _Failed {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_SessionCreation value) sessionCreation,
+    required TResult Function(_SettingUpDBConnection value)
+        settingUpDBConnection,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Failed value) failed,
   }) {
@@ -402,6 +699,8 @@ class _$_Failed implements _Failed {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_SessionCreation value)? sessionCreation,
+    TResult Function(_SettingUpDBConnection value)? settingUpDBConnection,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Failed value)? failed,
   }) {
@@ -412,6 +711,8 @@ class _$_Failed implements _Failed {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_SessionCreation value)? sessionCreation,
+    TResult Function(_SettingUpDBConnection value)? settingUpDBConnection,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Failed value)? failed,
     required TResult orElse(),

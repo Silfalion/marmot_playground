@@ -16,6 +16,7 @@ class GameMenu extends StatelessWidget {
         );
       },
       child: Scaffold(
+        appBar: AppBar(),
         body: Center(
           child: Column(
             children: const [

@@ -10,6 +10,8 @@ import 'dart:developer';
 
 import 'package:appwrite_ruq_api/appwrite_ruq_api.dart';
 import 'package:bloc/bloc.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:marmot_playground/app/view/app.dart';
 import 'package:marmot_playground/env/env.dart';
@@ -32,6 +34,11 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   FlutterError.onError = (details) {
     log(details.exceptionAsString(), stackTrace: details.stack);
   };
+
+  LicenseRegistry.addLicense(() async* {
+    final license = await rootBundle.loadString('google_fonts/K2D/OFL.txt');
+    yield LicenseEntryWithLineBreaks(['google_fonts'], license);
+  });
 
   Bloc.observer = AppBlocObserver();
 
