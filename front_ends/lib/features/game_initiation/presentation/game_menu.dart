@@ -30,97 +30,103 @@ class GameMenu extends StatelessWidget {
       },
       child: Scaffold(
         appBar: const MarmotAppBar(),
-        body: Center(
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 500),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                CachedNetworkImage(
-                  imageUrl: getGameManagementRepository(context)
-                      .imageUrl(gameData.imageId),
-                ),
-                Text(
-                  gameData.gameTitle,
-                  style: TextStyle(fontSize: enormousTextSize),
-                ),
-                bigVGap,
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    'Rules:',
-                    style: TextStyle(
-                      fontSize: bigTextSize,
-                      decoration: TextDecoration.underline,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-                bigVGap,
-                if (gameData.description.isEmpty)
-                  Column(
-                    children: [
-                      SvgPicture.asset(
-                        'assets/shrugging_man.svg',
-                        height: 200,
-                        color: adaptiveColorGenerator(
-                          context,
-                          lightColor,
-                          darkColor,
-                        ),
-                      ),
-                      averageVGap,
-                      Text(
-                        'Everything is fair game, I guess',
-                        style: TextStyle(fontSize: normalTextSize),
-                      )
-                    ],
-                  )
-                else
-                  SingleChildScrollView(
-                    child: SizedBox(
-                      height: 200,
-                      child: Text(gameData.description),
-                    ),
-                  ),
-                bigVGap,
-                Row(
+        body: Padding(
+          padding: const EdgeInsets.all(8),
+          child: SingleChildScrollView(
+            child: Center(
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 500),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
                   children: [
-                    TextButton(
-                      onPressed: Navigator.of(context).pop,
-                      style: TextButton.styleFrom(
-                        backgroundColor: adaptiveColorGenerator(
-                          context,
-                          lightColor,
-                          darkColor,
-                        ),
-                        primary: adaptiveColorGenerator(
-                          context,
-                          darkColor,
-                          lightColor,
-                        ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius:
-                              BorderRadius.circular(buttonCornerRadius),
-                        ),
-                        textStyle: TextStyle(
-                          fontSize: normalTextSize,
-                        ),
-                        padding: const EdgeInsets.symmetric(
-                          vertical: 20,
-                          horizontal: 10,
-                        ),
-                      ),
+                    CachedNetworkImage(
+                      imageUrl: getGameManagementRepository(context)
+                          .imageUrl(gameData.imageId),
+                    ),
+                    Text(
+                      gameData.gameTitle,
+                      style: TextStyle(fontSize: enormousTextSize),
+                    ),
+                    bigVertGap,
+                    Align(
+                      alignment: Alignment.centerLeft,
                       child: Text(
-                        'Go back to games list',
-                        style: TextStyle(fontSize: normalTextSize),
+                        'Rules:',
+                        style: TextStyle(
+                          fontSize: bigTextSize,
+                          decoration: TextDecoration.underline,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
-                    averageHGap,
-                    const Flexible(child: GameMenuProgressButton()),
+                    bigVertGap,
+                    if (gameData.description.isEmpty)
+                      Column(
+                        children: [
+                          SvgPicture.asset(
+                            'assets/shrugging_man.svg',
+                            height: 200,
+                            color: adaptiveColorGenerator(
+                              context,
+                              lightColor,
+                              darkColor,
+                            ),
+                          ),
+                          averageVertGap,
+                          Text(
+                            'Everything is fair game, I guess',
+                            style: TextStyle(fontSize: normalTextSize),
+                          )
+                        ],
+                      )
+                    else
+                      SingleChildScrollView(
+                        child: SizedBox(
+                          height: 200,
+                          child: Text(gameData.description),
+                        ),
+                      ),
+                    bigVertGap,
+                    Row(
+                      children: [
+                        TextButton(
+                          onPressed: Navigator.of(context).pop,
+                          style: TextButton.styleFrom(
+                            backgroundColor: adaptiveColorGenerator(
+                              context,
+                              lightColor,
+                              darkColor,
+                            ),
+                            primary: adaptiveColorGenerator(
+                              context,
+                              darkColor,
+                              lightColor,
+                            ),
+                            shape: RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.circular(buttonCornerRadius),
+                            ),
+                            textStyle: TextStyle(
+                              fontSize: normalTextSize,
+                            ),
+                            padding: const EdgeInsets.symmetric(
+                              vertical: 20,
+                              horizontal: 10,
+                            ),
+                          ),
+                          child: Text(
+                            'Go back to games list',
+                            style: TextStyle(fontSize: normalTextSize),
+                          ),
+                        ),
+                        averageHGap,
+                        const Flexible(child: GameMenuProgressButton()),
+                      ],
+                    ),
+                    bigVertGap
                   ],
                 ),
-              ],
+              ),
             ),
           ),
         ),

@@ -22,112 +22,115 @@ class GameChoicePage extends StatelessWidget {
       appBar: const MarmotAppBar(),
       body: BlocBuilder<GameChoiceCubit, GameChoiceState>(
         builder: (context, state) {
-          return Padding(
-            padding: const EdgeInsets.only(
-              left: 20,
-              right: 20,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  'Games',
-                  style: TextStyle(fontSize: 30),
-                ),
-                const Divider(
-                  color: lightColor,
-                ),
-                bigVGap,
-                bigVGap,
-                state.when(
-                  initial: SizedBox.new,
-                  loading: () => const Center(
-                    child: CircularProgressIndicator(),
+          return SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.only(
+                left: 20,
+                right: 20,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'Games',
+                    style: TextStyle(fontSize: 30),
                   ),
-                  failed: (e) => Center(
-                    child: Text(e.toString()),
+                  const Divider(
+                    color: lightColor,
                   ),
-                  success: (games) {
-                    if (games.isEmpty) {
-                      return Center(
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            const Text('Nothing to see here apparently'),
-                            ElevatedButton(
-                              onPressed: () =>
-                                  BlocProvider.of<GameChoiceCubit>(context)
-                                      .fetchGames(),
-                              child: const Text('Refresh'),
-                            )
-                          ],
-                        ),
-                      );
-                    } else {
-                      return Wrap(
-                        children: games
-                            .map(
-                              (game) => TextButton(
-                                style: TextButton.styleFrom(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(20),
-                                  ),
-                                ),
-                                onPressed: () {
-                                  Navigator.of(context).push(
-                                    MaterialPageRoute<void>(
-                                      builder: (context) => BlocProvider(
-                                        create: (context) => GameMenuCubit(
-                                          RepositoryProvider.of<
-                                              MatchmakingRepository>(
-                                            context,
-                                          ),
-                                        ),
-                                        child: GameMenu(
-                                          gameData: game,
-                                        ),
-                                      ),
+                  bigVertGap,
+                  bigVertGap,
+                  state.when(
+                    initial: SizedBox.new,
+                    loading: () => const Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                    failed: (e) => Center(
+                      child: Text(e.toString()),
+                    ),
+                    success: (games) {
+                      if (games.isEmpty) {
+                        return Center(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              const Text('Nothing to see here apparently'),
+                              ElevatedButton(
+                                onPressed: () =>
+                                    BlocProvider.of<GameChoiceCubit>(context)
+                                        .fetchGames(),
+                                child: const Text('Refresh'),
+                              )
+                            ],
+                          ),
+                        );
+                      } else {
+                        return Wrap(
+                          children: games
+                              .map(
+                                (game) => TextButton(
+                                  style: TextButton.styleFrom(
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(20),
                                     ),
-                                  );
-                                },
-                                child: Container(
-                                  padding: const EdgeInsets.all(8),
-                                  height: 200,
-                                  width: 200,
-                                  child: Column(
-                                    children: [
-                                      Expanded(
-                                        child: CachedNetworkImage(
-                                          imageUrl: RepositoryProvider.of<
-                                              GameManagementRepository>(
-                                            context,
-                                          ).imageUrl(game.imageId),
+                                  ),
+                                  onPressed: () {
+                                    Navigator.of(context).push(
+                                      MaterialPageRoute<void>(
+                                        builder: (context) => BlocProvider(
+                                          create: (context) => GameMenuCubit(
+                                            RepositoryProvider.of<
+                                                MatchmakingRepository>(
+                                              context,
+                                            ),
+                                          ),
+                                          child: GameMenu(
+                                            gameData: game,
+                                          ),
                                         ),
                                       ),
-                                      Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                          vertical: 15,
-                                          horizontal: 10,
-                                        ),
-                                        child: Text(
-                                          game.gameTitle,
-                                          style: TextStyle(
-                                            fontSize: normalTextSize,
+                                    );
+                                  },
+                                  child: Container(
+                                    padding: const EdgeInsets.all(8),
+                                    height: 200,
+                                    width: 200,
+                                    child: Column(
+                                      children: [
+                                        Expanded(
+                                          child: CachedNetworkImage(
+                                            imageUrl: RepositoryProvider.of<
+                                                GameManagementRepository>(
+                                              context,
+                                            ).imageUrl(game.imageId),
                                           ),
-                                          textAlign: TextAlign.center,
                                         ),
-                                      )
-                                    ],
+                                        Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                            vertical: 15,
+                                            horizontal: 10,
+                                          ),
+                                          child: Text(
+                                            game.gameTitle,
+                                            style: TextStyle(
+                                              fontSize: normalTextSize,
+                                            ),
+                                            textAlign: TextAlign.center,
+                                          ),
+                                        )
+                                      ],
+                                    ),
                                   ),
                                 ),
-                              ),
-                            )
-                            .toList(),
-                      );
-                    }
-                  },
-                )
-              ],
+                              )
+                              .toList(),
+                        );
+                      }
+                    },
+                  ),
+                  bigVertGap
+                ],
+              ),
             ),
           );
         },

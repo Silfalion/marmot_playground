@@ -52,7 +52,6 @@ class GameMenuProgressButton extends StatelessWidget {
             fail: () => ButtonState.fail,
             success: () => ButtonState.success,
           ),
-          height: 49,
           progressIndicatorSize: 20,
           radius: buttonCornerRadius,
           minWidthStates: const [],

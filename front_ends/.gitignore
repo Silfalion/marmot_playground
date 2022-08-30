@@ -20,6 +20,10 @@
 .env
 */.env.g.dart
 
+#firebase
+.firebase/
+.firebaserc
+
 # Visual Studio Code related
 .classpath
 .project

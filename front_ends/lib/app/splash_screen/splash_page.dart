@@ -7,15 +7,15 @@ import 'package:marmot_playground/app/splash_screen/cubit/splash_cubit.dart';
 import 'package:marmot_playground/common_widgets/marmot_appbar.dart';
 import 'package:marmot_playground/features/game_initiation/presentation/cubit/game_choice_cubit.dart';
 import 'package:marmot_playground/features/game_initiation/presentation/game_choice_page.dart';
+import 'package:marmot_playground/theme/text_style.dart';
 
-class SplashPage extends StatelessWidget{
+class SplashPage extends StatelessWidget {
   const SplashPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-      appBar: MarmotAppBar(),
+      appBar: const MarmotAppBar(),
       body: BlocConsumer<SplashCubit, SplashState>(
         bloc: BlocProvider.of<SplashCubit>(context)..loadStuff(),
         listener: (context, state) {
@@ -41,11 +41,11 @@ class SplashPage extends StatelessWidget{
           );
         },
         builder: (context, state) {
-          return Center(
+          return Container(
+            padding: const EdgeInsets.all(8),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-              
                 Expanded(
                   flex: 3,
                   child: Container(
@@ -107,10 +107,11 @@ class InitialMessage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       message,
-      style: const TextStyle(
-        fontSize: 40,
+      style: TextStyle(
+        fontSize: enormousTextSize,
         fontWeight: FontWeight.bold,
       ),
+      textAlign: TextAlign.center,
     );
   }
 }
