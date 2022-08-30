@@ -13,11 +13,11 @@ class GameMenuCubit extends Cubit<GameMenuState> {
 
   final MatchmakingRepository _matchmakingRepository;
 
-  late StreamSubscription<User?> _matchmakingSubscription;
+  late StreamSubscription<String?> _matchmakingSubscription;
 
   Future<void> makeMatchmakingRequest() async {
     emit(const GameMenuState.loading());
-    await _matchmakingRepository.findMatch();
+
 
     _matchmakingSubscription =
         _matchmakingRepository.opponentStream.stream.listen(
@@ -30,5 +30,8 @@ class GameMenuCubit extends Cubit<GameMenuState> {
         await _matchmakingSubscription.cancel();
       },
     );
+    await _matchmakingRepository.newFindMatch(timeOut: 10);
+
+ 
   }
 }

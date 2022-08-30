@@ -12,6 +12,8 @@ class MatchesCreator {
 
   final String _listPlayersAttName = 'listPlayers';
   final String _matchStatusAttName = 'matchStatus';
+  final String _playerOneMoveAttName = 'playerOneMove';
+  final String _playerTwoMoveAttName = 'playerTwoMove';
 
   final _collectionId = matchCollectionId;
 
@@ -28,14 +30,21 @@ class MatchesCreator {
       ),
       (error, stackTrace) {
         logger.d(stackTrace);
-        return error;
+        return error as AppwriteException;
       },
     );
 
-    (await matchCollectionCreation.run()).fold(
-      logger.d,
+    await (await matchCollectionCreation.run()).fold(
+      (l) async {
+        if (l.code == 409) {
+          print('MATCH COLLECTION ALREADY EXISTS');
+          await _createMatchesAttributes().run();
+        } else {
+          logger.d(l);
+        }
+      },
       (r) async {
-        logger.d('CREATED MATCH COLLECTION');
+        print('CREATED MATCH COLLECTION');
         await _createMatchesAttributes().run();
       },
     );
@@ -62,11 +71,44 @@ class MatchesCreator {
           array: true,
           size: 20,
         );
+
+        await _createPlayerOneMoveAttribute().run();
+        await _createPlayerTwoMoveAttribute().run();
       },
       (error, stackTrace) {
         logger.d(stackTrace);
         return error;
       },
+    );
+  }
+
+  TaskEither<Object, void> _createPlayerOneMoveAttribute() {
+    return TaskEither.tryCatch(
+      () async {
+        await _db.createStringAttribute(
+          collectionId: _collectionId,
+          key: _playerOneMoveAttName,
+          xrequired: false,
+          array: false,
+          size: 20,
+        );
+      },
+      (error, stackTrace) => error,
+    );
+  }
+
+  TaskEither<Object, void> _createPlayerTwoMoveAttribute() {
+    return TaskEither.tryCatch(
+      () async {
+        await _db.createStringAttribute(
+          collectionId: _collectionId,
+          key: _playerTwoMoveAttName,
+          xrequired: false,
+          array: false,
+          size: 20,
+        );
+      },
+      (error, stackTrace) => error,
     );
   }
 }

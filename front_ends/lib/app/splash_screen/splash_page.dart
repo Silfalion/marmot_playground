@@ -1,21 +1,21 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
-import 'package:appwrite_ruq_api/appwrite_ruq_api.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:game_management_repository/game_management_repository.dart';
+import 'package:image_fade/image_fade.dart';
 import 'package:marmot_playground/app/splash_screen/cubit/splash_cubit.dart';
-import 'package:marmot_playground/features/game_initiation/application/cubit/game_menu_cubit.dart';
+import 'package:marmot_playground/common_widgets/marmot_appbar.dart';
 import 'package:marmot_playground/features/game_initiation/presentation/cubit/game_choice_cubit.dart';
 import 'package:marmot_playground/features/game_initiation/presentation/game_choice_page.dart';
-import 'package:marmot_playground/features/game_initiation/presentation/game_menu.dart';
-import 'package:marmot_playground/theme/gaps.dart';
 
-class SplashPage extends StatelessWidget {
+class SplashPage extends StatelessWidget{
   const SplashPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
+      appBar: MarmotAppBar(),
       body: BlocConsumer<SplashCubit, SplashState>(
         bloc: BlocProvider.of<SplashCubit>(context)..loadStuff(),
         listener: (context, state) {
@@ -45,32 +45,18 @@ class SplashPage extends StatelessWidget {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: IconButton(
-                    icon:
-                        AdaptiveTheme.of(context).mode == AdaptiveThemeMode.dark
-                            ? const Icon(Icons.light_mode)
-                            : const Icon(Icons.mode_night),
-                    onPressed: () {
-                      if (AdaptiveTheme.of(context).mode ==
-                          AdaptiveThemeMode.dark) {
-                        AdaptiveTheme.of(context).setLight();
-                      } else {
-                        AdaptiveTheme.of(context).setDark();
-                      }
-                    },
-                  ),
-                ),
+              
                 Expanded(
                   flex: 3,
                   child: Container(
                     alignment: Alignment.bottomCenter,
                     padding: const EdgeInsets.only(bottom: 20),
-                    child: Image.asset(
-                      'assets/resized_marmot.png',
-                      fit: BoxFit.fill,
-                      filterQuality: FilterQuality.medium,
+                    child: ImageFade(
+                      image: Image.asset(
+                        'assets/resized_marmot.png',
+                        fit: BoxFit.fill,
+                        filterQuality: FilterQuality.medium,
+                      ).image,
                     ),
                   ),
                 ),

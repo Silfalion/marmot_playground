@@ -5,3 +5,6 @@ class RequestNoMatchFoundException implements Exception {}
 class RepositoryNotSetup implements Exception {}
 
 class RequestServerException implements Exception {}
+
+
+class RequestCurrentUserNullException implements Exception {}

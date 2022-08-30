@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-const smallHGap = SizedBox(height: 14);
-const averageHGap = SizedBox(height: 16);
-const bigHGap = SizedBox(height: 18);
-const veryBigHGap = SizedBox(height: 20);
+const smallVGap = SizedBox(height: 14);
+const averageVGap = SizedBox(height: 16);
+const bigVGap = SizedBox(height: 18);
+const veryBigVGap = SizedBox(height: 20);
 
-const smallVertGap = SizedBox(width: 14);
-const averageVertGap = SizedBox(width: 16);
-const bigVertGap = SizedBox(width: 18);
-const veryBigVertGap = SizedBox(width: 20);
+const smallHGap = SizedBox(width: 14);
+const averageHGap = SizedBox(width: 16);
+const bigHGap = SizedBox(width: 18);
+const veryBigHGap = SizedBox(width: 20);

@@ -12,7 +12,7 @@ class GamesCreator {
   final String _gameTitleAttName = 'gameTitle';
   final String _descriptionAttName = 'description';
 
- final String _collectionId = gameCollectionId;
+  final String _collectionId = gameCollectionId;
 
   ///creates the game collection and if the creation is successful
   ///all its attributes
@@ -27,14 +27,21 @@ class GamesCreator {
       ),
       (error, stackTrace) {
         logger.d(stackTrace);
-        return error;
+        return error as AppwriteException;
       },
     );
 
-    (await matchCollectionCreation.run()).fold(
-      logger.d,
+    await (await matchCollectionCreation.run()).fold(
+      (l) async {
+        if (l.code == 409) {
+          print('MATCH COLLECTION ALREADY EXISTS');
+          await _createGamesAttributes().run();
+        } else {
+          logger.d(l);
+        }
+      },
       (r) async {
-        logger.d('CREATED GAME COLLECTION');
+        print('CREATED GAME COLLECTION');
         await _createGamesAttributes().run();
       },
     );

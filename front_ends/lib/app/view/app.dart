@@ -42,10 +42,11 @@ class App extends StatelessWidget {
         ],
         child: AdaptiveTheme(
           initial: AdaptiveThemeMode.light,
-          light: buildLightTheme(),
-          dark: buildDarkTheme(),
+          light: buildTheme(),
+          dark: buildTheme(isDark: true),
           builder: (light, dark) => MaterialApp(
             theme: light,
+            debugShowCheckedModeBanner: false,
             darkTheme: dark,
             localizationsDelegates: const [
               AppLocalizations.delegate,

@@ -21,16 +21,19 @@ dependencies:
   flutter_form_builder: ^7.5.0
   flutter_localizations:
     sdk: flutter
+  flutter_svg: ^1.1.4
   fpdart: ^0.2.0
   freezed_annotation: ^2.1.0
   game_management_repository:
     path: packages/game_management_repository
   google_fonts: ^3.0.1
+  image_fade: ^0.6.1
   intl: ^0.17.0
   json_annotation: ^4.6.0
   latlong2: ^0.8.1
   logger: ^1.1.0
   progress_state_button: ^1.0.4
+  transparent_image: ^2.0.0
 
 dev_dependencies:
   bloc_test: ^9.0.3

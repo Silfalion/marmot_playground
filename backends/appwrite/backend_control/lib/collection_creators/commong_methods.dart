@@ -1,6 +1,5 @@
 import 'package:backend_control/utils/logger.dart';
 import 'package:dart_appwrite/dart_appwrite.dart';
-import 'package:dart_appwrite/models.dart';
 import 'package:fpdart/fpdart.dart';
 
 TaskEither<AppwriteException, void> checkCollectionExist(

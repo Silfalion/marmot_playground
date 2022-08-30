@@ -16,21 +16,34 @@ class GameManagementRepository {
     String databaseId = 'marmot_playground_db',
     Databases? mockDatabase,
   }) {
+    _projectId = projectId;
+
     _client.setEndpoint(endPoint).setProject(projectId);
 
     _database = mockDatabase ?? Databases(_client, databaseId: databaseId);
+
+    _storage = Storage(_client);
   }
 
   final Client _client;
 
+  ///identifier of the appwrite project on server
+  late final String _projectId;
+
   ///Appwrite database service
-  late Databases _database;
+  late final Databases _database;
+
+  ///Appwrite storage service
+  late final Storage _storage;
 
   //stores the list of games
   final Set<local_models.GameData> _gamesList = {};
 
   ///returns the list of games
   Set<local_models.GameData> get gamesList => _gamesList;
+
+  ///name of the bucket storing the games images
+  final String _bucketName = 'games_images';
 
   ///adds new games to the set if they're not there already
   void _addToGameList(List<local_models.GameData> newGames) {
@@ -56,5 +69,11 @@ class GameManagementRepository {
 
       return unit;
     });
+  }
+
+  ///returns the url to fetch a game image
+  String imageUrl(String imageId) {
+    
+    return '${_client.endPoint}/storage/buckets/$_bucketName/files/$imageId/view?project=$_projectId';
   }
 }
